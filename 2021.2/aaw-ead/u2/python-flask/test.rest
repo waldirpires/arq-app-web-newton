@@ -1,0 +1,24 @@
+### GET
+GET http://localhost:5000/todos
+
+### POST
+POST http://localhost:5000/todos
+Content-Type: application/json
+
+{
+    "task": "go to the supermarked"
+}
+
+### GET by ID
+GET http://localhost:5000/todos/todo5
+
+### PUT by ID
+PUT http://localhost:5000/todos/todo5
+Content-Type: application/json
+
+{
+    "task": "go to the cinema"
+}
+
+### DELETE by ID
+DELETE http://localhost:5000/todos/todo5
