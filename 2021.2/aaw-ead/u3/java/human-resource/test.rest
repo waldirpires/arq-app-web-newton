@@ -1,0 +1,34 @@
+### GET
+GET http://localhost:8080/users/613024fae1cdd23d9e826911
+
+
+### POST
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+    "nome": "Maria Pereira",
+    "idade": 36,
+    "pais": "Brasil",
+    "estado": "MG",
+    "cidade": "Contagem"
+}
+
+### GET
+GET http://localhost:8080/users
+
+### DELETE
+DELETE http://localhost:8080/users/613024fae1cdd23d9e826911
+
+### PUT
+PUT http://localhost:8080/users/6130257c9082b015f4cb7a4a
+Content-Type: application/json
+
+{
+    "id": "6130257c9082b015f4cb7a4a",
+    "nome": "Daniel Silva e Silva",
+    "idade": 20,
+    "pais": "Brasil",
+    "estado": "SP",
+    "cidade": "Franca"
+  }
