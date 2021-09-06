@@ -1,6 +1,8 @@
 package com.newton.aaw.hr.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -12,13 +14,23 @@ public class UserService {
 
 	private static int id = 0;
 	private Map<Integer, User> users = new HashMap<Integer, User>();
-	
+
 	// C - CRUD
-	public User save(User u) {
-		id++;
-		u.setId(id);
+	public User create(User u) {
+		u.setId(++id);
 
 		users.put(id, u);
+		
+		return u;
+	}
+	
+	// u - CRUD
+	public User update(Integer id, User u) {
+
+		var existing = get(id);
+
+		existing.setName(u.getName());
+		existing.setPassword(u.getPassword());
 		
 		return u;
 	}
@@ -33,6 +45,18 @@ public class UserService {
 		} 
 		
 		return user;
+	}
+	
+	// R - CRUD
+	public List<User> getAll() {
+		return new ArrayList<>(users.values());
+	}
+	
+	// D - CRUD
+	public void delete(Integer id) {
+		get(id);
+		
+		users.remove(id);
 	}
 	
 }
