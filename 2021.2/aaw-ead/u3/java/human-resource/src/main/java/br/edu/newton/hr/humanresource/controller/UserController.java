@@ -16,7 +16,7 @@ import br.edu.newton.hr.humanresource.domain.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 import static org.springframework.http.HttpStatus.NO_CONTENT;
-
+ç
 @RestController
 @RequiredArgsConstructor
 public class UserController {

@@ -1,8 +1,8 @@
-package com.newton.aaw.hr.domain.entity;
+package com.newton.aaw.hr.api;
 
 import java.time.LocalDateTime;
 
-import com.newton.aaw.hr.api.UserDto;
+import com.newton.aaw.hr.domain.entity.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class UserDto {
 
 	private Integer id;
 	
@@ -29,12 +29,15 @@ public class User {
 	
 	private LocalDateTime modifiedAt;
 	
-	public User(UserDto userDto) {
-		this.id = userDto.getId();
-		this.name = userDto.getName();
-		this.password = userDto.getPassword();
-		this.email = userDto.getEmail();
-		this.mobile = userDto.getMobile();
+	// construtor Entidade para DTO
+	public UserDto(User u) {
+		this.id = u.getId();
+		this.name = u.getName();
+		this.password = u.getPassword();
+		this.email = u.getEmail();
+		this.mobile = u.getMobile();
+		this.createdAt = u.getCreatedAt();
+		this.modifiedAt = u.getModifiedAt();
 	}
 	
 }
