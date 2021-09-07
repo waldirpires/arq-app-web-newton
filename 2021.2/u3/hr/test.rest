@@ -2,7 +2,7 @@
 GET http://localhost:8080/users
 
 ### GET with invalid ID
-GET http://localhost:8080/users/6136bfaa1a29b152445f0a57
+GET http://localhost:8080/users/1
 
 ### POST new User
 POST http://localhost:8080/users
@@ -15,19 +15,8 @@ Content-Type: application/json
     "mobile": "+55.31.991234567"
 }
 
-### POST new User
-POST http://localhost:8080/users
-Content-Type: application/json
-
-{
-    "name": "Jane Doe",
-    "password": "1234",
-    "email": "jane.doe@newtonpaiva.br",
-    "mobile": "+55.31.993214531"
-}
-
 ### PUT update user
-PUT http://localhost:8080/users/6136bf3e1a29b152445f0a56
+PUT http://localhost:8080/users/1
 Content-Type: application/json
 
 {
@@ -38,4 +27,4 @@ Content-Type: application/json
 }
 
 ### DELETE
-DELETE http://localhost:8080/users/6136bf3e1a29b152445f0a56
+DELETE http://localhost:8080/users/1
