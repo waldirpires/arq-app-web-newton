@@ -16,14 +16,14 @@ import br.edu.newton.hr.humanresource.domain.service.UserService;
 import lombok.RequiredArgsConstructor;
 
 import static org.springframework.http.HttpStatus.NO_CONTENT;
-ç
+
 @RestController
 @RequiredArgsConstructor
 public class UserController {
 
 	private final UserService userService;
 	
-	@PostMapping("/users")
+	@PostMapping("/v1/users")
 	public User save(@RequestBody User user) {
 		
 		var saved = userService.save(user);
@@ -31,7 +31,7 @@ public class UserController {
 		return saved;
 	}
 
-	@PutMapping("/users/{id}")
+	@PutMapping("/v1/users/{id}")
 	public User update(@PathVariable String id, @RequestBody User user) {
 		
 		var saved = userService.save(user);
@@ -39,7 +39,7 @@ public class UserController {
 		return saved;
 	}
 
-	@GetMapping("/users/{id}")
+	@GetMapping("/v1/users/{id}")
 	public User getById(@PathVariable String id) {
 		
 		var user = userService.getById(id);
@@ -47,13 +47,13 @@ public class UserController {
 		return user;
 	}	
 
-	@GetMapping("/users")
+	@GetMapping("/v1/users")
 	public List<User> getAll() {
 		
 		return userService.getAll();
 	}	
 
-	@DeleteMapping("/users/{id}")
+	@DeleteMapping("/v1/users/{id}")
 	public ResponseEntity<Void> delete(@PathVariable String id) {
 		userService.delete(id);
 		
