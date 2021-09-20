@@ -1,0 +1,41 @@
+### register
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+    "name": "jane.doe",
+    "password": "654321",
+    "role": "ADMIN"
+}
+
+### GET all
+GET http://localhost:5000/users
+x-access-tokens: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiI4OTdhNTlkMS1iOGZiLTRjM2EtYmNjYi1kNzg1N2E0MThiOTYiLCJleHAiOjE2MzE3NTIwNjJ9.0WzNFhORjzbGFVSelBs02SJnJA7QYzS9d1ONoWPugI8
+
+
+### GET by ID
+GET http://localhost:5000/users/897a59d1-b8fb-4c3a-bccb-d7857a418b96
+
+### LOGIN
+POST  http://localhost:5000/login
+Authorization: Basic jane.doe:654321
+
+### GET all
+GET http://localhost:5000/books
+x-access-tokens: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiI4OTdhNTlkMS1iOGZiLTRjM2EtYmNjYi1kNzg1N2E0MThiOTYiLCJleHAiOjE2MzE3NTIwNjJ9.0WzNFhORjzbGFVSelBs02SJnJA7QYzS9d1ONoWPugI8
+
+### POST new Book
+POST http://localhost:5000/books
+x-access-tokens: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiI4OTdhNTlkMS1iOGZiLTRjM2EtYmNjYi1kNzg1N2E0MThiOTYiLCJleHAiOjE2MzE3NTIwNjJ9.0WzNFhORjzbGFVSelBs02SJnJA7QYzS9d1ONoWPugI8
+Content-Type: application/json
+
+{
+    "name": "The Terminal",
+    "author": "John levovski",
+    "publisher": "LTC",
+    "year": 2001
+}
+
+###
+GET http://localhost:5000/books
+x-access-tokens: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJwdWJsaWNfaWQiOiI3ZDg5YzNmMC01MzY2LTQzZTAtODljZC05ZjBmODcwZjVhOGQiLCJleHAiOjE2MzE3MzkyMTR9.au_1tnS9zHFMjvt5VfiBxU9T1TcXlSNuY2sV5k59E-w

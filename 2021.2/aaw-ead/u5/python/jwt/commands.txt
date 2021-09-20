@@ -1,0 +1,23 @@
+sudo apt-get install sqlite3
+pip3 install -r requirements.txt
+
+table
+
+create table users( 
+    id integer primary key, 
+    public_id integer not null, 
+    name text not null, 
+    password text not null, 
+    role text not null
+);
+
+create table books( 
+    id integer primary key, 
+    user_id integer,
+    name text not null, 
+    author text not null, 
+    publisher text not null, 
+    year integer not null,
+    FOREIGN KEY (user_id)
+        REFERENCES users (id) 
+);
