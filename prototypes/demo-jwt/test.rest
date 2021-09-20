@@ -1,0 +1,31 @@
+### GET users
+GET http://localhost:8080/v1/users
+
+### POST users
+POST http://localhost:8080/v1/users
+Content-Type: application/json
+
+{
+    "name": "john.doe",
+    "password": "123456",
+    "email": "john.doe@newtonpaiva.br",
+    "mobile": "+5531992237822"
+}
+
+### GET users by ID
+GET http://localhost:8080/v1/users/1
+
+
+### PUT users
+PUT http://localhost:8080/v1/users/1
+Content-Type: application/json
+
+{
+    "name": "john.doe.1",
+    "password": "12345678",
+    "email": "john.doe.jr@newtonpaiva.br",
+    "mobile": "+5531992237823"
+}
+
+### DELETE users/
+DELETE http://localhost:8080/v1/users/1
