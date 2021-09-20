@@ -48,11 +48,11 @@ public class UserController {
 	
 	@PostMapping("/users")
 	public UserDto create(@RequestBody UserDto u) {
-		var user = new User(u);
+		var user = new User(u); // fronteira para dominio
 		
 		user = userService.create(user);
 		
-		return new UserDto(user);
+		return new UserDto(user); // dominio para fronteira
 	}
 	
 	@PutMapping("/users/{id}")
