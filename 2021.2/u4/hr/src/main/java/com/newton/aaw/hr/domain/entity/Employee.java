@@ -9,12 +9,14 @@ import com.newton.aaw.hr.api.EmployeeDto;
 import com.newton.aaw.hr.domain.enums.Gender;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.With;
 
-@Getter
-@Setter
+@Data
+@With // builder pattern
 @AllArgsConstructor
 @NoArgsConstructor
 public class Employee {
@@ -38,7 +40,7 @@ public class Employee {
 	
 	private Float monthlySalary;
 	
-	private String hourSalary;
+	private Float hourSalary;
 	
 	private String area;	
 	

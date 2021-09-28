@@ -35,7 +35,7 @@ public class EmployeeDto {
 	
 	private Float monthlySalary;
 	
-	private String hourSalary;
+	private Float hourSalary;
 	
 	private String area;	
 	
