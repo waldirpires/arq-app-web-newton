@@ -20,7 +20,7 @@ import com.newton.aaw.hr.service.EmployeeService;
 import lombok.AllArgsConstructor;
 
 @RestController
-@AllArgsConstructor
+@AllArgsConstructor 
 public class EmployeeController {
 
 	private final EmployeeService employeeService;
@@ -63,7 +63,7 @@ public class EmployeeController {
 		return new EmployeeDto(employee);
 	}
 	
-	@DeleteMapping("/employees/{id}")
+	@DeleteMapping("/employees/{id}") 
 	public ResponseEntity<Void> delete(@PathVariable String id) {
 		employeeService.delete(id);
 		
