@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.newton.aaw.hr.domain.entity.User;
 import com.newton.aaw.hr.domain.repository.UserRepository;
 import com.newton.aaw.hr.exception.NotAuthorizedException;
+import com.newton.aaw.hr.exception.NotFoundException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -39,7 +40,20 @@ public class AuthenticationService {
 		return userExists;		
 	}
 	
-	public void logout(String userName) {
+	public User logout(String userName) {
+		// 1. verificar o nome do usuário		
+		var user = userRepository.findOneByName(userName);
+		if (user.isEmpty()) {
+			throw new NotFoundException("User with name " + userName + " not found!");
+		}
 		
+		var userExists = user.get();
+
+		// 2. atualizar as informações de login/logout
+		userExists.setLoggedOutAt(LocalDateTime.now());
+
+		userRepository.save(userExists);
+		
+		return userExists;		
 	}	
 }
