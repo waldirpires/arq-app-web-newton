@@ -39,7 +39,7 @@ class AuthenticationServiceTest {
 		
 		try {
 			// test
-			unit.login(name, null);
+			unit.login(name, "123"); 
 			
 			fail("Expected NotAuthorizedException");			
 		} catch (NotAuthorizedException ex) {

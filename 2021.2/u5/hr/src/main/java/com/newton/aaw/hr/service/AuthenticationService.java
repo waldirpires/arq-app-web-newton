@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.newton.aaw.hr.domain.entity.User;
 import com.newton.aaw.hr.domain.repository.UserRepository;
+import com.newton.aaw.hr.exception.BadRequestException;
 import com.newton.aaw.hr.exception.NotAuthorizedException;
 import com.newton.aaw.hr.exception.NotFoundException;
 
@@ -19,6 +20,12 @@ public class AuthenticationService {
 	
 	
 	public User login(String userName, String password) {
+		// 0. parametros inválidos
+		if (userName == null || userName.trim().isEmpty() || // "  waldir  "
+				password == null || password.trim().isEmpty()) {
+			throw new BadRequestException("Parametros inválidos.");
+		}		
+		
 		// 1. verificar o nome do usuário		
 		var user = userRepository.findOneByName(userName);
 		if (user.isEmpty()) {
