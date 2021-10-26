@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.newton.aaw.hr.domain.entity.User;
+import com.newton.aaw.hr.exception.BadRequestException;
+import com.newton.aaw.hr.exception.TokenExpiredException;
 
 class TokenServiceTest {
 	
@@ -59,17 +61,34 @@ class TokenServiceTest {
 		user.setName("wrpires");
 		user.setEmail("waldir.junior@newtonpaiva.br");
 		
-		var exp = new Date(System.currentTimeMillis() + 2000);
+		var exp = new Date(System.currentTimeMillis() - 2000);
 		
 		var token = unit.generateToken(user, exp);
 
-		Thread.sleep(3000);
-		
 		// test: 
-		unit.validate("Bearer " + token);
-		
-		// assert: 
+		try {
+			unit.validate("Bearer " + token);
+			fail("Expected TokenExpiredException");
+		} catch (TokenExpiredException ex) {
+			// assert: 
+			assertEquals("Token has expired!", ex.getMessage());
+		}
 	}
 	
+
+	@Test
+	void test_validate_withInvalidToken_shouldThrowBadRequestExceptions() throws InterruptedException {
+		// given:
+		var token = "invalid";
+
+		// test: 
+		try {
+			unit.validate("Bearer " + token);
+			fail("Expected BadRequestException");
+		} catch (BadRequestException ex) {
+			// assert: 
+			assertEquals("JWT token is invalid!", ex.getMessage());
+		}
+	}
 
 }

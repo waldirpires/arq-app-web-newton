@@ -41,6 +41,8 @@ public class UserDto {
 	// data de logout
 	private LocalDateTime loggedOutAt;	
 	
+	private String token;
+	
 	// construtor Entidade para DTO
 	public UserDto(User u) {
 		this.id = u.getId();

@@ -2,11 +2,14 @@ package com.newton.aaw.hr.service;
 
 import java.util.Date;
 
+import org.springframework.stereotype.Service;
+
 import com.newton.aaw.hr.domain.entity.User;
 import com.newton.aaw.hr.exception.BadRequestException;
 import com.newton.aaw.hr.exception.TokenExpiredException;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -20,6 +23,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
  * @author wrpires
  *
  */
+@Service
 public class TokenService {
 
 	// 5 MINUTES
@@ -42,7 +46,8 @@ public class TokenService {
 		String token = Jwts.builder().setIssuedAt(new Date(System.currentTimeMillis()))
 				.setSubject(user.getName().concat(":").concat(user.getEmail()))
 				.setExpiration(exp)
-				.signWith(SignatureAlgorithm.HS256, SECRET).compact();
+				.signWith(SignatureAlgorithm.HS256, SECRET)
+				.compact();
 
 		System.out.println(token);
 
@@ -55,6 +60,10 @@ public class TokenService {
 	}
 
 	public void validate(String token) {
+		if (token == null || token.trim().isEmpty()) {
+			throw new BadRequestException("JWT token is invalid!");			
+		}
+		
 		// "retirar Bearer"
 		String tokenTratado = token.replace("Bearer ", "");
 
@@ -65,20 +74,12 @@ public class TokenService {
 			System.out.println("exp: " + claims.getExpiration());
 			System.out.println("sub: " + claims.getSubject());
 
-			var currentDateTime = new Date(System.currentTimeMillis());
-
-			if (claims.getExpiration().before(currentDateTime)) {
-				System.out.println("Token expirado!");
-
-				throw new TokenExpiredException();
-			}
-
 			System.out.println("Token validado com sucesso!");
 			
-		} catch (TokenExpiredException ex) {
+		} catch (ExpiredJwtException ex) {
 			System.out.println(ex);
-
-			throw ex;
+			
+			throw new TokenExpiredException();
 		} catch (Exception ex) {
 			System.out.println(ex);
 

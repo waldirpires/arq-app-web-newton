@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
+import com.newton.aaw.hr.api.UserDto;
 import com.newton.aaw.hr.domain.entity.User;
 import com.newton.aaw.hr.domain.repository.UserRepository;
 import com.newton.aaw.hr.exception.BadRequestException;
@@ -18,8 +19,9 @@ public class AuthenticationService {
 
 	private final UserRepository userRepository;
 	
+	private final TokenService tokenService;	
 	
-	public User login(String userName, String password) {
+	public UserDto login(String userName, String password) {
 		// 0. parametros inválidos
 		if (userName == null || userName.trim().isEmpty() || // "  waldir  "
 				password == null || password.trim().isEmpty()) {
@@ -44,7 +46,13 @@ public class AuthenticationService {
 
 		userRepository.save(userExists);
 		
-		return userExists;		
+		// adicionar a geração do token JWT
+		var token = tokenService.generateToken(userExists);
+		
+		var userDto = new UserDto(userExists);
+		userDto.setToken(token);
+		
+		return userDto;		
 	}
 	
 	public User logout(String userName) {

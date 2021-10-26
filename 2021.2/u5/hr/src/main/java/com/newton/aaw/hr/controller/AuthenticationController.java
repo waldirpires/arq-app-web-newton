@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.newton.aaw.hr.api.LoginDto;
+import com.newton.aaw.hr.api.UserDto;
 import com.newton.aaw.hr.service.AuthenticationService;
 
 import lombok.RequiredArgsConstructor;
@@ -18,14 +19,14 @@ public class AuthenticationController {
 	private final AuthenticationService authenticationService;
 	
 	@PostMapping("/auth/login")
-	public ResponseEntity<Void> login(@RequestBody LoginDto login) {
+	public UserDto login(@RequestBody LoginDto login) {
 		// realizar a autenticação
-		authenticationService.login(
+		var dto = authenticationService.login(
 				login.getUserName(), 
 				login.getPassword()
 		);
 		
-		return new ResponseEntity<Void>(HttpStatus.OK);
+		return dto;
 	}
 	
 	@PostMapping("/auth/logout")
