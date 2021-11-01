@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.newton.aaw.hr.api.EmployeeDto;
+import com.newton.aaw.hr.api.EmployeesResource;
 import com.newton.aaw.hr.domain.entity.Employee;
 import com.newton.aaw.hr.service.EmployeeService;
 

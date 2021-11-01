@@ -1,4 +1,4 @@
-package com.newton.aaw.hr.controller;
+package com.newton.aaw.hr.api;
 
 import java.util.List;
 
@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.newton.aaw.hr.api.EmployeeDto;
-import com.newton.aaw.hr.api.ErrorResponseDto;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
