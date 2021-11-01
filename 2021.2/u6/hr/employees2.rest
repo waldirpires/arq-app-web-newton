@@ -1,0 +1,20 @@
+GET http://localhost:8080/v1/employees
+
+
+###
+POST http://localhost:8080/v1/employees
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "dateOfBirth": "2001-02-03",
+    "gender": "MALE",
+    "startDate": "2021-09-01",
+    "position": "Full Stack SW Engineer",
+    "monthlySalary": "3500",
+    "area": "IT projects"
+}
+
+###
+GET http://localhost:8080/v1/employees/61807080df616d3cb10b365e
