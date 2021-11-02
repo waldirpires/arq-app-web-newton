@@ -2,6 +2,7 @@ package com.newton.aaw.hr.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,16 +48,22 @@ public class EmployeeController implements EmployeesResource {
 	}
 	
 	@Override
-	public EmployeeDto create(@RequestBody EmployeeDto employeeDto) {
+	public ResponseEntity<EmployeeDto> create(
+			@RequestBody EmployeeDto employeeDto
+	) {
 		var employee = new Employee(employeeDto);
 		
 		employee = employeeService.create(employee);
 		
-		return new EmployeeDto(employee);
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(new EmployeeDto(employee));
 	}
 
 	@Override
-	public EmployeeDto update(@PathVariable String id, @RequestBody EmployeeDto employeeDto) {
+	public EmployeeDto update(
+			@PathVariable String id, 
+			@RequestBody EmployeeDto employeeDto
+	) {
 		var employee = new Employee(employeeDto);
 		
 		employee = employeeService.update(id, employee);
