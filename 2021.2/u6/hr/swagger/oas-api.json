@@ -1,0 +1,636 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+    },
+    "servers": [
+    {
+    "url": "http://localhost:8080",
+    "description": "Generated server url"
+    }
+    ],
+    "paths": {
+    "/auth/logout": {
+    "post": {
+    "tags": [
+    "authentication-controller"
+    ],
+    "operationId": "logout",
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LoginDto"
+    }
+    }
+    },
+    "required": true
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/hello/jwt": {
+    "get": {
+    "tags": [
+    "hello-controller"
+    ],
+    "operationId": "helloJwt",
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "type": "string"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/hello": {
+    "get": {
+    "tags": [
+    "hello-controller"
+    ],
+    "operationId": "hello",
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "type": "string"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/auth/login": {
+    "post": {
+    "tags": [
+    "authentication-controller"
+    ],
+    "operationId": "login",
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LoginDto"
+    }
+    }
+    },
+    "required": true
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/UserDto"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/users/{id}": {
+    "get": {
+    "tags": [
+    "user-controller"
+    ],
+    "operationId": "getById",
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/UserDto"
+    }
+    }
+    }
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "user-controller"
+    ],
+    "operationId": "update",
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UserDto"
+    }
+    }
+    },
+    "required": true
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/UserDto"
+    }
+    }
+    }
+    }
+    }
+    },
+    "delete": {
+    "tags": [
+    "user-controller"
+    ],
+    "operationId": "delete",
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK"
+    }
+    }
+    }
+    },
+    "/v1/employees/{id}": {
+    "get": {
+    "tags": [
+    "employee-controller"
+    ],
+    "summary": "Recupera um Employee a partir de um ID",
+    "operationId": "getById_1",
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string"
+    }
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "um Employee retornado com sucesso",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EmployeeDto"
+    }
+    }
+    }
+    },
+    "404": {
+    "description": "Employee com ID não encontrado",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/ErrorResponseDto"
+    }
+    }
+    }
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "employee-controller"
+    ],
+    "summary": "Atualiza um Employee existente a partir de um ID",
+    "operationId": "update_1",
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string"
+    }
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EmployeeDto"
+    }
+    }
+    },
+    "required": true
+    },
+    "responses": {
+    "200": {
+    "description": "um Employee atualizado com sucesso",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EmployeeDto"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Parâmetros inválidos",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/ErrorResponseDto"
+    }
+    }
+    }
+    },
+    "404": {
+    "description": "Employee com ID não encontrado",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/ErrorResponseDto"
+    }
+    }
+    }
+    }
+    }
+    },
+    "delete": {
+    "tags": [
+    "employee-controller"
+    ],
+    "summary": "Excluir um Employee a partir de um ID",
+    "operationId": "delete_1",
+    "parameters": [
+    {
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string"
+    }
+    }
+    ],
+    "responses": {
+    "204": {
+    "description": "um Employee excluido com sucesso",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EmployeeDto"
+    }
+    }
+    }
+    },
+    "404": {
+    "description": "Employee com ID não encontrado",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/ErrorResponseDto"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/v1/employees": {
+    "get": {
+    "tags": [
+    "employee-controller"
+    ],
+    "summary": "Recupera todos os Employees",
+    "operationId": "getAll",
+    "responses": {
+    "200": {
+    "description": "uma lista de Employees retornada com sucesso",
+    "content": {
+    "application/json": {
+    "schema": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/EmployeeDto"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "post": {
+    "tags": [
+    "employee-controller"
+    ],
+    "summary": "Permite criar um novo Employee",
+    "operationId": "create",
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EmployeeDto"
+    }
+    }
+    },
+    "required": true
+    },
+    "responses": {
+    "201": {
+    "description": "um Employee criado com sucesso",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/EmployeeDto"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Parâmetros inválidos",
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/ErrorResponseDto"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/users": {
+    "get": {
+    "tags": [
+    "user-controller"
+    ],
+    "operationId": "getAll_1",
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/UserDto"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "post": {
+    "tags": [
+    "user-controller"
+    ],
+    "operationId": "create_1",
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/UserDto"
+    }
+    }
+    },
+    "required": true
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/UserDto"
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "components": {
+    "schemas": {
+    "LoginDto": {
+    "type": "object",
+    "properties": {
+    "userName": {
+    "type": "string"
+    },
+    "password": {
+    "type": "string"
+    }
+    }
+    },
+    "UserDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "string"
+    },
+    "name": {
+    "type": "string"
+    },
+    "password": {
+    "type": "string"
+    },
+    "email": {
+    "type": "string"
+    },
+    "mobile": {
+    "type": "string"
+    },
+    "status": {
+    "type": "string",
+    "enum": [
+    "INACTIVE",
+    "ACTIVE",
+    "BLOCKED"
+    ]
+    },
+    "role": {
+    "type": "string",
+    "enum": [
+    "ADMIN",
+    "READ",
+    "MODIFY"
+    ]
+    },
+    "createdAt": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "modifiedAt": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "loggedInAt": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "loggedOutAt": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "token": {
+    "type": "string"
+    }
+    }
+    },
+    "EmployeeDto": {
+    "type": "object",
+    "properties": {
+    "id": {
+    "type": "string"
+    },
+    "firstName": {
+    "type": "string"
+    },
+    "lastName": {
+    "type": "string"
+    },
+    "dateOfBirth": {
+    "type": "string",
+    "format": "date"
+    },
+    "gender": {
+    "type": "string",
+    "enum": [
+    "MALE",
+    "FEMALE"
+    ]
+    },
+    "startDate": {
+    "type": "string",
+    "format": "date"
+    },
+    "endDate": {
+    "type": "string",
+    "format": "date"
+    },
+    "position": {
+    "type": "string"
+    },
+    "monthlySalary": {
+    "type": "number",
+    "format": "float"
+    },
+    "hourSalary": {
+    "type": "number",
+    "format": "float"
+    },
+    "area": {
+    "type": "string"
+    },
+    "createdAt": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "modifiedAt": {
+    "type": "string",
+    "format": "date-time"
+    }
+    }
+    },
+    "ErrorResponseDto": {
+    "type": "object",
+    "properties": {
+    "timestamp": {
+    "type": "string"
+    },
+    "status": {
+    "type": "integer",
+    "format": "int32"
+    },
+    "error": {
+    "type": "string"
+    },
+    "path": {
+    "type": "string"
+    }
+    }
+    }
+    }
+    }
+    }
+    // 20211101213255
+    // http://localhost:8080/v3/api-docs
+    ​
+    {
+      "openapi": "3.0.1",
+      "info": {
+        "title": "OpenAPI definition",
+        "version": "v0"
+      },
+      "servers": [
+        {
+          "url": "http://localhost:8080",
+          "description": "Generated server url"
+        }
+      ],
+      "paths": {
+        "/auth/logout": {
+          "post": {
+            "tags": [
+              "authentication-controller"
+            ],
+            "operationId": "logout",
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/LoginDto"
+                  }
+                }
+              },
+              "required": true
+            },
+            "responses": {
+              "200": {
+                "description": "OK"
+              }
+            }
+          }
+        },
+        "/hello/jwt": {
+          "get": {
+            "tags": [
+    

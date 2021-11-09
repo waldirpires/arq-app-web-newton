@@ -1,0 +1,4 @@
+GET http://localhost:8080/v1/pets
+
+###
+GET http://localhost:8080/v1/pets/b0e453b3-d54b-4fe8-818a-035b5fb3851d 

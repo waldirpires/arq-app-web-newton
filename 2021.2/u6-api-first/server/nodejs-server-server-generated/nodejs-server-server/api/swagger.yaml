@@ -1,0 +1,185 @@
+---
+swagger: "2.0"
+info:
+  description: ""
+  version: "1.0.0"
+  title: ""
+  termsOfService: ""
+  contact:
+    email: "waldir.junior@newtonpaiva.br"
+  license:
+    name: ""
+    url: "http://newtonpaiva.br/aaw/terms"
+host: "localhost:8080"
+basePath: "/v1"
+tags:
+- name: "Pet"
+  description: "rotas relacionadas a animais de estimacao"
+schemes:
+- "http"
+paths:
+  /pets:
+    get:
+      tags:
+      - "Pet"
+      summary: "Lista todos os Pets da loja."
+      operationId: "getAllPets"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        "200":
+          description: "Lista de Pets com sucesso."
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Pet"
+      x-swagger-router-controller: "Pet"
+    post:
+      tags:
+      - "Pet"
+      summary: "Cria un novo Pet."
+      operationId: "criarPet"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pet a ser criado"
+        required: true
+        schema:
+          $ref: "#/definitions/Pet"
+      responses:
+        "201":
+          description: "Pet criado com sucesso."
+          schema:
+            $ref: "#/definitions/Pet"
+        "400":
+          description: "Parâmetros inválidos."
+      x-swagger-router-controller: "Pet"
+  /pets/{id}:
+    get:
+      tags:
+      - "Pet"
+      summary: "Retorna um Pet da loja a partir do ID."
+      operationId: "getPetById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID do Pet a ser retornado"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Pet encontrado com sucesso."
+          schema:
+            $ref: "#/definitions/Pet"
+        "404":
+          description: "Pet não encontrado."
+      x-swagger-router-controller: "Pet"
+    put:
+      tags:
+      - "Pet"
+      summary: "Atualiza um Pet da loja a partir do ID."
+      operationId: "updatePetById"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID do Pet a ser retornado"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Pet a ser criado"
+        required: true
+        schema:
+          $ref: "#/definitions/Pet"
+      responses:
+        "200":
+          description: "Pet atualizado com sucesso."
+          schema:
+            $ref: "#/definitions/Pet"
+        "400":
+          description: "Parâmetros inválidos."
+        "404":
+          description: "Pet não encontrado."
+      x-swagger-router-controller: "Pet"
+    delete:
+      tags:
+      - "Pet"
+      summary: "Deleta um Pet da loja a partir do ID."
+      operationId: "deletePetById"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID do Pet a ser retornado"
+        required: true
+        type: "string"
+      responses:
+        "204":
+          description: "Pet deletado com sucesso."
+        "404":
+          description: "Pet não encontrado."
+      x-swagger-router-controller: "Pet"
+definitions:
+  Pet:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "b0e453b3-d54b-4fe8-818a-035b5fb3851d"
+      nome:
+        type: "string"
+        example: "cão"
+      especie:
+        type: "string"
+        example: "canino"
+        description: "Espécie do Pet"
+        enum:
+        - "canino"
+        - "felino"
+        - "ave"
+        - "reptil"
+        - "mamifero"
+      raca:
+        type: "string"
+        example: "beagle"
+      foto:
+        type: "string"
+        example: "http://newtonpaiva.br/pets/001.jpg"
+      idade:
+        type: "integer"
+        example: 8
+      status:
+        type: "string"
+        example: "criado"
+        description: "Status do Pet"
+        enum:
+        - "criado"
+        - "vendido"
+        - "excluido"
+      dataDeCriacao:
+        type: "string"
+        format: "date-time"
+        example: "2021-11-08 20:05:00"
+      dataDeModificacao:
+        type: "string"
+        format: "date-time"
+        example: "2021-11-08 20:05:00"
+    example:
+      especie: "canino"
+      idade: 8
+      foto: "http://newtonpaiva.br/pets/001.jpg"
+      dataDeModificacao: "2021-11-08 20:05:00"
+      raca: "beagle"
+      dataDeCriacao: "2021-11-08 20:05:00"
+      nome: "cão"
+      id: "b0e453b3-d54b-4fe8-818a-035b5fb3851d"
+      status: "criado"
+externalDocs:
+  description: ""
+  url: "http://newtonpaiva.br/aaw/terms"
