@@ -54,12 +54,18 @@ public class EmployeeController implements EmployeesResource {
 	public ResponseEntity<EmployeeDto> create(
 			@RequestBody EmployeeDto employeeDto
 	) {
+		log.info("POST create employee: {}", employeeDto);
+
 		var employee = new Employee(employeeDto);
 
 		employee = employeeService.create(employee);
 
+		var dto = new EmployeeDto(employee);
+
+		log.info("POST create employee response: {}", dto);
+
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(new EmployeeDto(employee));
+				.body(dto);
 	}
 
 	@Override
@@ -76,6 +82,8 @@ public class EmployeeController implements EmployeesResource {
 
 	@Override
 	public ResponseEntity<Void> delete(@PathVariable String id) {
+		log.info("DELETE employee by ID: {}", id);
+
 		employeeService.delete(id);
 
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);

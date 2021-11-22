@@ -6,18 +6,18 @@ POST http://localhost:8080/v1/employees
 Content-Type: application/json
 
 {
-    "firstName": "Jane",
-    "lastName": "Doe",
-    "dateOfBirth": "2001-07-03",
+    "firstName": "Mary",
+    "lastName": "Jane",
+    "dateOfBirth": "2011-01-05",
     "gender": "FEMALE",
-    "startDate": "2021-11-01",
-    "position": "Product Owner",
-    "monthlySalary": "8500",
-    "area": "Business and IT"
+    "startDate": "2021-11-16",
+    "position": "QA Engineer",
+    "monthlySalary": "4500",
+    "area": "Products"
 }
 
 ###
-GET http://localhost:8080/v1/employees/61807080df616d3cb10b365e
+GET http://localhost:8080/v1/employees/619c2624b1687b05b54f0c8a
 
 ###
-DELETE http://localhost:8080/v1/employees/618080fb132f654dfccb29e9
+DELETE http://localhost:8080/v1/employees/619c26af9d3d092f0bc151d7

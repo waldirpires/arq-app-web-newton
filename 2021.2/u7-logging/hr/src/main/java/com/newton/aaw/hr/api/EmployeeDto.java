@@ -10,39 +10,41 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 public class EmployeeDto {
 
 	private String id;
-	
+
 	private String firstName;
-	
+
 	private String lastName;
-	
+
 	private LocalDate dateOfBirth;
-	
+
 	private Gender gender;
-	
+
 	private LocalDate startDate; // yyyy-mm-dd
-	
+
 	private LocalDate endDate;
-	
+
 	private String position;
-	
+
 	private Float monthlySalary;
-	
+
 	private Float hourSalary;
-	
-	private String area;	
-	
+
+	private String area;
+
 	private LocalDateTime createdAt; // yyyy-mm-dd HH:mm:ss
-	
-	private LocalDateTime modifiedAt;	
-	
+
+	private LocalDateTime modifiedAt;
+
 	public EmployeeDto(Employee e) {
 		this.setId(e.getId());
 		this.setFirstName(e.getFirstName());
@@ -55,9 +57,8 @@ public class EmployeeDto {
 		this.setMonthlySalary(e.getMonthlySalary());
 		this.setHourSalary(e.getHourSalary());
 		this.setArea(e.getArea());
-		
+
 		this.setCreatedAt(e.getCreatedAt());
-		this.setModifiedAt(e.getModifiedAt());		
+		this.setModifiedAt(e.getModifiedAt());
 	}
 }
-

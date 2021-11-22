@@ -27,6 +27,8 @@ public class EmployeeService {
 
 		employeeRepository.save(e);
 
+		log.debug("Employee created: {}", e);
+
 		return e;
 	}
 
@@ -71,7 +73,10 @@ public class EmployeeService {
 	}
 
 	public void delete(String id) {
-		get(id);
+		var employee = get(id);
+
+		// employee a ser excluido
+		log.debug("Employee deleted: {}", employee);
 
 		employeeRepository.deleteById(id);
 	}

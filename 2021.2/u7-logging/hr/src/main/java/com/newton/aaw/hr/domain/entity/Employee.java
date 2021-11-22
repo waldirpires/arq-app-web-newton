@@ -10,9 +10,7 @@ import com.newton.aaw.hr.domain.enums.Gender;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.With;
 
 @Data
@@ -23,31 +21,31 @@ public class Employee {
 
 	@Id
 	private String id;
-	
+
 	private String firstName;
-	
+
 	private String lastName;
-	
+
 	private LocalDate dateOfBirth;
-	
+
 	private Gender gender;
-	
+
 	private LocalDate startDate; // yyyy-mm-dd
-	
+
 	private LocalDate endDate;
-	
+
 	private String position;
-	
+
 	private Float monthlySalary;
-	
+
 	private Float hourSalary;
-	
-	private String area;	
-	
+
+	private String area;
+
 	private LocalDateTime createdAt; // yyyy-mm-dd HH:mm:ss
-	
-	private LocalDateTime modifiedAt;	
-	
+
+	private LocalDateTime modifiedAt;
+
 	public Employee(EmployeeDto e) {
 		this.setFirstName(e.getFirstName());
 		this.setLastName(e.getLastName());
@@ -61,4 +59,3 @@ public class Employee {
 		this.setArea(e.getArea());
 	}
 }
-
