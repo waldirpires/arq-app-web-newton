@@ -1,0 +1,23 @@
+GET http://localhost:8080/v1/employees
+
+
+###
+POST http://localhost:8080/v1/employees
+Content-Type: application/json
+
+{
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "dateOfBirth": "2001-07-03",
+    "gender": "FEMALE",
+    "startDate": "2021-11-01",
+    "position": "Product Owner",
+    "monthlySalary": "8500",
+    "area": "Business and IT"
+}
+
+###
+GET http://localhost:8080/v1/employees/61807080df616d3cb10b365e
+
+###
+DELETE http://localhost:8080/v1/employees/618080fb132f654dfccb29e9
