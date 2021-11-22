@@ -10,25 +10,26 @@ import com.newton.aaw.hr.domain.repository.EmployeeRepository;
 import com.newton.aaw.hr.exception.NotFoundException;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class EmployeeService {
 
 	private final EmployeeRepository employeeRepository;
-	
-	
+
 	public Employee create(Employee e) {
 		var now  = LocalDateTime.now();
-		
+
 		e.setCreatedAt(now);
 		e.setModifiedAt(now);
-		
+
 		employeeRepository.save(e);
-		
+
 		return e;
 	}
-	
+
 	public Employee update(String id, Employee u) {
 		var existing = get(id);
 
@@ -42,31 +43,36 @@ public class EmployeeService {
 		existing.setMonthlySalary(u.getMonthlySalary());
 		existing.setHourSalary(u.getHourSalary());
 		existing.setArea(u.getArea());
-		
+
 		existing.setModifiedAt(LocalDateTime.now());
-		
+
 		employeeRepository.save(existing);
-		
-		return existing; 
+
+		return existing;
 	}
-	
+
 	public Employee get(String id) {
+		log.debug("Getting Employee by ID: {}", id);
+
 		var employee = employeeRepository.findById(id);
-		
+
 		if (employee.isEmpty()) {
+			// logging 404 in console
+			log.error("ERROR: Employee with ID {} not found.", id);
+			// HTTP 404
 			throw new NotFoundException("Employee with ID " + id + " not found");
 		}
-		
+
 		return employee.get();
 	}
-	
+
 	public List<Employee> getAll() {
 		return employeeRepository.findAll();
 	}
-	
+
 	public void delete(String id) {
 		get(id);
-		
+
 		employeeRepository.deleteById(id);
 	}
 }
